@@ -6,5 +6,6 @@ const App = () => {
     <RootNavigation />
   )
 }
+//testing
 
 export default App;
