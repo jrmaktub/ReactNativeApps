@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, ScrollView, SafeAreaView, Platform, Image } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, ScrollView, SafeAreaView, Platform, Image, FlatList } from 'react-native'
 // import { Icon } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { colors, parameters } from '../global/styles'
 import { StatusBar } from 'react-native'
+import { filterData } from '../global/data'
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -47,6 +48,26 @@ const HomeScreen = () => {
                         </View>
                     </View>
                 </View>
+
+                <View>
+                        <FlatList
+                            numRows={4}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            data={filterData}
+                            keyExtractor = {(item)=>item.id}
+                            renderItem = {({item})=>(
+                                <View style={styles.card}>
+                                    <View style={styles.view2}>
+                                        <Image style={styles.image2} source={item.image}/>
+                                    </View>
+                                    <View>
+                                        <Text style={styles.title}>{item.name}</Text>
+                                    </View>
+                                </View>
+                            )}
+                        />
+                    </View>
             </ScrollView>
 
             <StatusBar style= 'light' backgroundColor= '#2058c0' translucent />
