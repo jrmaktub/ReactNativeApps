@@ -40,6 +40,7 @@ const HomeScreen = () => {
                         </View>
 
                         <View style={{width: 150,}}>
+                            {/* https://www.cleanpng.com/png-caterpillar-inc-excavator-wall-decal-sticker-heavy-78244/ */}
                             <Image
                                 style={styles.excavator}
                                 source={{uri: "https://png2.cleanpng.com/sh/e9da48555686012029e5af5d48e45b99/L0KzQYm3UcI0N6tuj5H0aYP2gLBuTfNifJZ3iNt1bHH1Pbr1g71mgJRmjtN9b4Kwh7LzjL1lbZRmhJ98dHnme7b5TfhmaacyTdMBOEDkSbTtUsJjbGYzUaM6MUm2RYS4VcE3P2c8UaI5OUm0SXB3jvc=/kisspng-caterpillar-inc-excavator-wall-decal-sticker-heav-5a680a9cf22bd5.9111935315167679009919.png"}}
