@@ -6,7 +6,9 @@ import { colors, parameters } from '../global/styles'
 import { StatusBar } from 'react-native'
 import { filterData } from '../global/data'
 
-
+import MapView from 'react-native-maps';
+import { PROVIDER_GOOGLE } from 'react-native-maps'
+ 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 const STATUSBAR_HEIGHT = StatusBar.currentHeight;
@@ -18,7 +20,7 @@ const HomeScreen = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.icon1}>
-                {/* <Icon type='material-community' */}
+                    {/* <Icon type='material-community' */}
                     <Icon
                         name='menu'
                         color={colors.white}
@@ -39,11 +41,11 @@ const HomeScreen = () => {
                             </View>
                         </View>
 
-                        <View style={{width: 150,}}>
+                        <View style={{ width: 150, }}>
                             {/* https://www.cleanpng.com/png-caterpillar-inc-excavator-wall-decal-sticker-heavy-78244/ */}
                             <Image
                                 style={styles.excavator}
-                                source={{uri: "https://png2.cleanpng.com/sh/e9da48555686012029e5af5d48e45b99/L0KzQYm3UcI0N6tuj5H0aYP2gLBuTfNifJZ3iNt1bHH1Pbr1g71mgJRmjtN9b4Kwh7LzjL1lbZRmhJ98dHnme7b5TfhmaacyTdMBOEDkSbTtUsJjbGYzUaM6MUm2RYS4VcE3P2c8UaI5OUm0SXB3jvc=/kisspng-caterpillar-inc-excavator-wall-decal-sticker-heav-5a680a9cf22bd5.9111935315167679009919.png"}}
+                                source={{ uri: "https://png2.cleanpng.com/sh/e9da48555686012029e5af5d48e45b99/L0KzQYm3UcI0N6tuj5H0aYP2gLBuTfNifJZ3iNt1bHH1Pbr1g71mgJRmjtN9b4Kwh7LzjL1lbZRmhJ98dHnme7b5TfhmaacyTdMBOEDkSbTtUsJjbGYzUaM6MUm2RYS4VcE3P2c8UaI5OUm0SXB3jvc=/kisspng-caterpillar-inc-excavator-wall-decal-sticker-heav-5a680a9cf22bd5.9111935315167679009919.png" }}
                             />
 
                         </View>
@@ -51,27 +53,102 @@ const HomeScreen = () => {
                 </View>
 
                 <View>
-                        <FlatList
-                            numRows={4}
-                            horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            data={filterData}
-                            keyExtractor = {(item)=>item.id}
-                            renderItem = {({item})=>(
-                                <View style={styles.card}>
-                                    <View style={styles.view2}>
-                                        <Image style={styles.image2} source={item.image}/>
-                                    </View>
-                                    <View>
-                                        <Text style={styles.title}>{item.name}</Text>
-                                    </View>
+                    <FlatList
+                        numRows={4}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        data={filterData}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item }) => (
+                            <View style={styles.card}>
+                                <View style={styles.view2}>
+                                    <Image style={styles.image2} source={item.image} />
                                 </View>
-                            )}
+                                <View>
+                                    <Text style={styles.title}>{item.name}</Text>
+                                </View>
+                            </View>
+                        )}
+                    />
+                </View>
+                <View style={styles.view3}>
+                    <Text style={styles.text3}> Where To ?</Text>
+                    <View style={styles.view4}>
+                        <Icon
+                            name='clock-time-four'
+                            color={colors.grey1}
+                            size={26}
+                        />
+                        <Text style={{ marginLeft: 5 }}>Now</Text>
+                        <Icon
+                            name='chevron-down'
+                            color={colors.grey1}
+                            size={26}
                         />
                     </View>
+                </View>
+                <View style={styles.view5}>
+                    <View style={styles.view6}>
+                        <View style={styles.view7}>
+                            <Icon
+                                name='map-marker'
+                                color={colors.black}
+                                size={22}
+                            />
+
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 18, color: colors.black }}>Merendon Hills</Text>
+                            <Text style={{ color: colors.grey3 }}>Rancho El Coco, San Pedro Sula</Text>
+                        </View>
+                    </View>
+                    <View>
+                        <Icon
+                            name='chevron-right'
+                            color={colors.grey}
+                            size={26}
+                        />
+                    </View>
+                </View>
+
+                <View style={{...styles.view5, borderBottomWidth: 0}}>
+                    <View style={styles.view6}>
+                        <View style={styles.view7}>
+                            <Icon
+                                name='map-marker'
+                                color={colors.black}
+                                size={22}
+                            />
+
+                        </View>
+                        <View>
+                            <Text style={{ fontSize: 18, color: colors.black }}>Virgilio's Chola</Text>
+                            <Text style={{ color: colors.grey3 }}>Progresso, El Progresso</Text>
+                        </View>
+                    </View>
+                    <View>
+                        <Icon
+                            name='chevron-right'
+                            color={colors.grey}
+                            size={26}
+                        />
+                    </View>
+                </View>
+
+                <Text style={styles.text4}>Around You</Text>
+
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                            <MapView
+                                provider={PROVIDER_GOOGLE}
+                                style={styles.map}
+                            
+                            >
+
+                            </MapView>
+                </View>
             </ScrollView>
 
-            <StatusBar style= 'light' backgroundColor= '#2058c0' translucent />
+            <StatusBar style='light' backgroundColor='#2058c0' translucent />
 
         </SafeAreaView>
 
